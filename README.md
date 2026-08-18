@@ -55,29 +55,29 @@ No real backend or user database as stated in requirements. Authentication is ha
 
 ## How to Test the Login/MFA Flow:
 
-1. Go to '/login' and fill in the form using either one of the mock credentials above.
-2. On the MFA screen, enter '123456' as the verification code ("Resend code" will re-display the demo code on screen).
-3. Once on '/dashboard', it will show the segment list scoped to the role.
+1. Go to `/login` and fill in the form using either one of the mock credentials above.
+2. On the MFA screen, enter `123456` as the verification code ("Resend code" will re-display the demo code on screen).
+3. Once on `/dashboard`, it will show the segment list scoped to the role.
 4. Log out and log back in as the other mock user to compare the read-only vs. read/write experience.
 5. Try submitting the login form empty, or with a malformed email, to see field validation errors.
-6. Try navigating to '/mfa' or '/dashboard' in the URL bar without logging in. You'll be redirected to '/login'.
+6. Try navigating to `/mfa` or `/dashboard` in the URL bar without logging in. You'll be redirected to `/login`.
 
 
 ## Key Design Decisions and Assumptions:
 
 - **Vite**: Instead of using Next.js, I used Vite because this project is client-side only (no real backend). Next.js's main advantages like, SSR and API routes, weren't relevant here.
 - **JavaScript**: JavaScript was chosen over TypeScript because the focus is on the auth/RBAC logic, rather than focusing on type annotations.
-- **Explicit three-stage auth state machine**: 'login', 'mfa', and 'authenticated' rather than a simple boolean like 'isLoggedIn' represents the real states of "passed credentials, but not yet passed MFA". This is what 'ProtectedRoute' and 'MfaPage' both use to guard access.
+- **Explicit three-stage auth state machine**: `login`, `mfa`, and `authenticated` rather than a simple boolean like `isLoggedIn` represents the real states of "passed credentials, but not yet passed MFA". This is what `ProtectedRoute` and `MfaPage` both use to guard access.
 - **login()/verifyMFA()**: Throws on failure rather than returning a result object to keep the success path in each component clean. No custom error codes were added since nothing in the app currently needs to branch on error type, only needs to display the message.
 - **Both RBAC UI patterns are demonstrated on the dashboard, using mock "network segment" data to reflect Alkira's CSX product domain**: Per the requirements' "hidden or disabled" wording, the "+ Add segment" button is fully hidden for read-only users, while per-row "Edit" buttons are rendered but disabled.
-- **ProtectedRoute**: Only gates on auth stage, not role. both roles can reach '/dashboard' but the access control is enforced inside the page (which UI elements render/are enabled), not at the routing layer. This decision was chosen because both roles are meant to see the dashboard, just with different capabilities.
+- **ProtectedRoute**: Only gates on auth stage, not role. both roles can reach `/dashboard` but the access control is enforced inside the page (which UI elements render/are enabled), not at the routing layer. This decision was chosen because both roles are meant to see the dashboard, just with different capabilities.
 - **Sign UP is intentionally minimal**: Per the requirements' "full registration is not required" wording, the Sign Up page validates input and shows a confirmation, but does not create a real account or modify the mock user list.
 
 
 ## Known Limitations:
 
 - **Auth state is in-memory only**: React state with no localStorage, cookies, or session tokens. Refreshing the page resets the session back to the login screen. A real and live production app would use a session token.
-- **MFA uses one static, shared demo code**: Rather than a randomly generated per-login code that expires, hard coded '123456'. A real implementation would generate and validate a unique, time-limited code per attempt.
-- **No password strength enforcement**: On Sign Up or Login, using the scope's "full registration is not required", made the assumption that a password strength enforcement is not required. If needed, the addition would be straightforward, such as 'validateSignupPassword' function.
+- **MFA uses one static, shared demo code**: Rather than a randomly generated per-login code that expires, hardcoded `123456`. A real implementation would generate and validate a unique, time-limited code per attempt.
+- **No password strength enforcement**: On Sign Up or Login, using the scope's "full registration is not required", made the assumption that a password strength enforcement is not required. If needed, the addition would be straightforward, such as `validateSignupPassword` function.
 - **No persisted/dynamic user creation**: Sign Up does not add a user to the mock list.
-- **Test coverage focuses on the most evaluation-relevant logic**: Form validation, RBAC, and login interaction is focused rather than covering every screen (e.g., 'MfaPage' and 'SignUpPage' aren't directly unit tested, though they share the same validated 'FormField' pattern as 'LoginPage').
+- **Test coverage focuses on the most evaluation-relevant logic**: Form validation, RBAC, and login interaction is focused rather than covering every screen (e.g., `MfaPage` and `SignUpPage` aren't directly unit tested, though they share the same validated `FormField` pattern as `LoginPage`).
