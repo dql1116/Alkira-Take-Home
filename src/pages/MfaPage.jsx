@@ -70,7 +70,7 @@ export function MfaPage() {
 
                     <button
                         type="submit"
-                        className="mt-2 rounded-md bg-blue-600 py-2 text-sm font-medium text-white transition hover:bg-blue-700"
+                        className="mt-2 rounded-md bg-[#006DF0] py-2 text-sm font-medium text-white transition-colors duration-200 hover:bg-[#0058C2] cursor-pointer"
                     >
                         Verify
                     </button>
@@ -80,7 +80,7 @@ export function MfaPage() {
                     <button
                         type="button"
                         onClick={handleResend}
-                        className='text-blue-600 hover:underline'
+                        className='text-[#006DF0] transition-colors duration-200 hover:text-[#0058C2] hover:underline cursor-pointer'
                     >
                         Resend code
                     </button>

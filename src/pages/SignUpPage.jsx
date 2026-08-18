@@ -30,6 +30,11 @@ export function SignUpPage() {
     return (
         <div className="flex min-h-screen items-center justify-center bg-slate-50 px-4">
             <div className="w-full max-w-sm rounded-xl bg-white p-8 shadow-sm">
+                <img
+                    src="/alkira-name-logo.png"
+                    alt="Alkira"
+                    className="mx-auto mb-6 h-10 w-auto"
+                />
                 <h1 className="mb-2 text-xl font-semibold text-center text-slate-900">
                     Create an account
                 </h1>
@@ -38,7 +43,7 @@ export function SignUpPage() {
                 </p>
 
                 {submitted ? (
-                    <p role="status" className="text-sm text-green-600">
+                    <p role="status" className="text-sm text-center text-green-600">
                         Thanks! Redirecting you to sign in&hellip;
                     </p>
                 ): (
@@ -61,7 +66,7 @@ export function SignUpPage() {
                         />
                         <button
                             type="submit"
-                            className="mt-2 rounded-md bg-blue-600 py-2 text-sm font-medium text-white transition hover:bg-blue-700"
+                            className="mt-2 rounded-md bg-[#006DF0] py-2 text-sm font-medium text-white transition-colors duration-200 hover:bg-[#0058C2] cursor-pointer"
                         >
                             Sign up
                         </button>
@@ -70,7 +75,7 @@ export function SignUpPage() {
 
                 <p className="mt-6 text-center text-sm text-slate-500">
                     Already have an account?{' '}
-                    <Link to="/login" className="font-medium text-blue-600 hover:underline">
+                    <Link to="/login" className="font-medium text-[#006DF0] transition-colors duration-200 hover:text-[#0058C2] hover:underline">
                         Sign in
                     </Link>
                 </p>
