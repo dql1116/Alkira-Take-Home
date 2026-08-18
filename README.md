@@ -10,7 +10,7 @@ A simple authentication experience that demonstrates login, MFA, form validation
 
 ## Technologies Used:
 
-- **React** (JavaScript)
+- **<u>React<u/>** (JavaScript)
 - **Vite** - Build tool and dev server
 - **React Router** - Client-side routing (Login -> MFA -> Dashboard, plus Sign Up)
 - **TailwindCSS** - Styling
