@@ -71,7 +71,9 @@ No real backend or user database as stated in requirements. Authentication is ha
 ## Key Design Decisions and Assumptions:
 
 - **Vite:** Instead of using Next.js, I used Vite because this project is client-side only (no real backend). Next.js's main advantages like, SSR and API routes, weren't relevant here.
+
 - **JavaScript:** JavaScript was chosen over TypeScript because the focus is on the auth/RBAC logic, rather than focusing on type annotations.
+
 - **Explicit three-stage auth state machine:** `login`, `mfa`, and `authenticated` rather than a simple boolean like `isLoggedIn` represents the real states of "passed credentials, but not yet passed MFA". This is what `ProtectedRoute` and `MfaPage` both use to guard access.
 - **login()/verifyMFA():** Throws on failure rather than returning a result object to keep the success path in each component clean. No custom error codes were added since nothing in the app currently needs to branch on error type, only needs to display the message.
 - **Both RBAC UI patterns are demonstrated on the dashboard, using mock "network segment" data to reflect Alkira's CSX product domain:** Per the requirements' "hidden or disabled" wording, the "+ Add segment" button is fully hidden for read-only users, while per-row "Edit" buttons are rendered but disabled.
