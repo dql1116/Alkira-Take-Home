@@ -1,4 +1,4 @@
-**Alkira Take-Home: Login + MFA**
+## Alkira Take-Home: Login + MFA
 
 David Lee
 
