@@ -1,14 +1,14 @@
-## Alkira Take-Home: Login + MFA
+# Alkira Take-Home: Login + MFA
 
 David Lee
 
 
-# Objective:
+## Objective:
 
 A simple authentication experience that demonstrates login, MFA, form validation, and role-based access control. Built for Alkira's Software Engineer - UI Developer take-home exercise.
 
 
-# Technologies Used:
+## Technologies Used:
 
 - **React** (JavaScript)
 - **Vite** - Build tool and dev server
@@ -18,7 +18,7 @@ A simple authentication experience that demonstrates login, MFA, form validation
 - **React Context API** - Auth state management
 
 
-# Setup/Install Instructions:
+## Setup/Install Instructions:
 
 ```bash
 git clone <this-repo-url>
@@ -27,7 +27,7 @@ npm install
 ```
 
 
-# Local Run Instructions:
+## Local Run Instructions:
 
 ```bash
 npm run dev
@@ -41,7 +41,7 @@ npx vitest run
 ```
 
 
-# Mock User Credentials/Roles:
+## Mock User Credentials/Roles:
 
 No real backend or user database as stated in requirements. Authentication is handled using hardcoded mock user list (src/data/mockUsers.js).
 
@@ -53,7 +53,7 @@ No real backend or user database as stated in requirements. Authentication is ha
 **Mock MFA code (for all users):** 123456
 
 
-# How to Test the Login/MFA Flow:
+## How to Test the Login/MFA Flow:
 
 1. Go to '/login' and fill in the form using either one of the mock credentials above.
 2. On the MFA screen, enter '123456' as the verification code ("Resend code" will re-display the demo code on screen).
@@ -63,7 +63,7 @@ No real backend or user database as stated in requirements. Authentication is ha
 6. Try navigating to '/mfa' or '/dashboard' in the URL bar without logging in. You'll be redirected to '/login'.
 
 
-# Key Design Decisions and Assumptions:
+## Key Design Decisions and Assumptions:
 
 - **Vite**: Instead of using Next.js, I used Vite because this project is client-side only (no real backend). Next.js's main advantages like, SSR and API routes, weren't relevant here.
 - **JavaScript**: JavaScript was chosen over TypeScript because the focus is on the auth/RBAC logic, rather than focusing on type annotations.
@@ -74,7 +74,7 @@ No real backend or user database as stated in requirements. Authentication is ha
 - **Sign UP is intentionally minimal**: Per the requirements' "full registration is not required" wording, the Sign Up page validates input and shows a confirmation, but does not create a real account or modify the mock user list.
 
 
-# Known Limitations:
+## Known Limitations:
 
 - **Auth state is in-memory only**: React state with no localStorage, cookies, or session tokens. Refreshing the page resets the session back to the login screen. A real and live production app would use a session token.
 - **MFA uses one static, shared demo code**: Rather than a randomly generated per-login code that expires, hard coded '123456'. A real implementation would generate and validate a unique, time-limited code per attempt.
