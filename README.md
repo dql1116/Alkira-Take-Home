@@ -89,8 +89,6 @@ No real backend or user database as stated in requirements. Authentication is ha
 
 - **Sign UP is intentionally minimal:** Per the requirements' "full registration is not required" wording, the Sign Up page validates input and shows a confirmation, but does not create a real account or modify the mock user list.
 
-- **Sign UP is intentionally minimal:** Per the requirements' "full registration is not required" wording, the Sign Up page validates input and shows a confirmation, but does not create a real account or modify the mock user list.
-
 - **Sidebar layout:** Reflects the pattern of an admin/network console rather than a generic top-nav layout, with user info and logout anchored in the sidebar. The segment list is the primary focus of the main content area.
 
 - **Mobile responsive:** The dashboard page is mobile responsive with the sidebar collapsing on mobile screens to a hamburger button that triggers a right-side drawer.
